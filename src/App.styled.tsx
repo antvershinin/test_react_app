@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Appstyled = styled.div`
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   min-width: 100%;
   font-family: "Roboto";
 
