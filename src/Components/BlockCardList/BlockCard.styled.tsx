@@ -5,9 +5,9 @@ export const BlockCardStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-
   background-color: #1c1c33;
   opacity: 0.6;
+  color: white;
 
   .card_blocks_count {
     margin: 16px;

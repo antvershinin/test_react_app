@@ -1,12 +1,9 @@
 import React from "react";
 import { BlockCardStyled } from "./BlockCard.styled";
+import { ICard } from "../../interfaces/Interfaces";
 
 type Props = {
-  data_item: {
-    title: string;
-    description: string;
-    blocksCount: number;
-  };
+  data_item: ICard;
 };
 
 export const BlockCardItem: React.FC<Props> = (props) => {
