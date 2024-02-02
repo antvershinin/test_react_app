@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchPanelStyled } from "./SearchPanel.styled";
 import { useCards } from "../../context/CardProvider";
+import { useNavigate } from "react-router";
 
 type Props = {};
 
 export const SearchPanel: React.FC<Props> = () => {
-  const [search, setSearch] = useState("");
   const { filterCardsState } = useCards();
 
+  const navigate = useNavigate();
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const searchText: string = e.currentTarget.value;
-    setSearch(searchText);
-    filterCardsState(searchText);
+    const tagret = e.currentTarget.value;
+    if (tagret.startsWith(" ")) return;
+    tagret ? navigate(`/search/${tagret}`) : navigate("/");
+    filterCardsState(tagret);
   };
 
   return (
