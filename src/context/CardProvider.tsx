@@ -12,6 +12,8 @@ export const CardProvider = ({ children }: { children: React.ReactNode }) => {
   const [cards, setCards] = useState<ICard[]>([]);
   const [foundCards, setFoundCards] = useState<ICard[]>([]);
 
+
+
   const fillCardsState = (cards: ICard[]) => {
     setCards(cards);
   };
@@ -22,9 +24,12 @@ export const CardProvider = ({ children }: { children: React.ReactNode }) => {
         return (
           el.title.toLowerCase().includes(text.toLowerCase()) ||
           el.description.toLowerCase().includes(text.toLowerCase())
-        );
-      });
-      setFoundCards(result);
+          
+          );
+        });
+        
+        setFoundCards(result);
+
     } else if (text === "") {
       setCards(cards);
     }

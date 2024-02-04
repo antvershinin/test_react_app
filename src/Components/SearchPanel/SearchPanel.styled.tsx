@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const SearchPanelStyled = styled.div`
   display: flex;
+  
   flex-direction: column;
   width: 100%;
   margin-bottom: 32px;
+
   .search {
     display: flex;
     flex-direction: row;

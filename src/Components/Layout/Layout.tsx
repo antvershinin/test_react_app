@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { Outlet } from "react-router-dom";
 import { LayoutStyled } from "./Layout.styled";
 import { Header } from "../Header/Header";
@@ -8,10 +7,13 @@ export const Layout = () => {
   return (
     <LayoutStyled>
       <Header />
-      <main className="container">
+      <section className="search_panel">
         <SearchPanel />
+      </section>
+      
+      <section className="main_content">
         <Outlet />
-      </main>
+      </section>
     </LayoutStyled>
   );
 };

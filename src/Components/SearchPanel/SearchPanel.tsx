@@ -2,10 +2,14 @@ import React from "react";
 import { SearchPanelStyled } from "./SearchPanel.styled";
 import { useCards } from "../../context/CardProvider";
 import { useNavigate } from "react-router";
+import { useParams } from "react-router";
+
 
 type Props = {};
 
 export const SearchPanel: React.FC<Props> = () => {
+  const { keywords } = useParams();
+
   const { filterCardsState } = useCards();
 
   const navigate = useNavigate();
@@ -16,6 +20,9 @@ export const SearchPanel: React.FC<Props> = () => {
     filterCardsState(tagret);
   };
 
+  
+
+
   return (
     <SearchPanelStyled>
       <div className="search">
@@ -24,6 +31,8 @@ export const SearchPanel: React.FC<Props> = () => {
           className="search_logo"
         />
         <input
+        
+          defaultValue={keywords ? keywords : undefined}
           onChange={handleChange}
           className="search_input"
           type="text"
