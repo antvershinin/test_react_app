@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BlockCardStyled = styled.div`
+export const BlockCardStyled = styled.div<{suitable : boolean}>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -59,13 +59,15 @@ export const BlockCardStyled = styled.div`
     margin-bottom: 8px;
     border-radius: 4px;
     border: 1px solid #6E42CA;
-    color: #6E42CA;
+    color: ${(props) => (props.suitable ? '#000' : '#6E42CA')};
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: ${(props) => (props.suitable ? '#6E42CA' : null)};
     cursor: pointer;
     &:hover {
       border-width:2px;
     }
+
   }
 `;

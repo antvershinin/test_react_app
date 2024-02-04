@@ -2,7 +2,7 @@ import React from "react";
 import { BlockCardStyled } from "./BlockCard.styled";
 import { ICard } from "../../interfaces/Interfaces";
 import Highlighter from "react-highlight-words";
-
+import { useCards } from "../../context/CardProvider";
 
 type Props = {
   data_item: ICard;
@@ -13,17 +13,21 @@ type Props = {
 
 export const BlockCardItem: React.FC<Props> = (props) => {
   const {
-    data_item: { blocksCount, description, title },
+    data_item: { id, blocksCount, description, title },
   } = props;
+
+  const {markAsSuitable} = useCards()
 
   const stringHighlight: (string | RegExp)[] = props.keyword ? props.keyword.split(' ') : []
   
- 
+ const handleClick = () => {
+  markAsSuitable(id)
+ }
 
 
   return (
     <>
-    <BlockCardStyled>
+    <BlockCardStyled suitable={props.data_item.suitable}>
       <div className="card_blocks_count">
         <div className="block_count_image">
 
@@ -38,7 +42,7 @@ export const BlockCardItem: React.FC<Props> = (props) => {
       </div>
       <div className="card_buttons">
         <div className="buttons_button">Details</div>
-        <div className="buttons_button">Mark as Suitable</div>
+        <div className="buttons_button" onClick={handleClick}>Mark as Suitable</div>
       </div>
     </BlockCardStyled>
     </>

@@ -6,13 +6,20 @@ const CardContext = React.createContext<{
   foundCards: ICard[];
   fillCardsState: (cards: ICard[]) => void;
   filterCardsState: (text: string) => void;
+  markAsSuitable: (id : string) => void
 }>(null!);
 
 export const CardProvider = ({ children }: { children: React.ReactNode }) => {
   const [cards, setCards] = useState<ICard[]>([]);
   const [foundCards, setFoundCards] = useState<ICard[]>([]);
 
-
+  const markAsSuitable = (id:string) => {
+    const newList = cards.map((el)=> {
+      if (el.id !== id) return el
+      else return {...el, suitable:!el.suitable}
+    })
+    setCards(newList)
+  }
 
   const fillCardsState = (cards: ICard[]) => {
     setCards(cards);
@@ -40,6 +47,7 @@ export const CardProvider = ({ children }: { children: React.ReactNode }) => {
     foundCards,
     fillCardsState,
     filterCardsState,
+    markAsSuitable
   };
 
   return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
