@@ -6,48 +6,48 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { useCards } from "../../context/CardProvider";
 
 type Props = {
-  filtered?: boolean;
+  searched?: boolean;
   keyword?: string;
 };
 
-export const BlockCardList: React.FC<Props> = ({ filtered, keyword }) => {
-  const { cards, foundCards, filterCardsState } = useCards();
+export const BlockCardList: React.FC<Props> = ({ searched, keyword }) => {
+  const { cards, foundCards } = useCards();
 
-  const data = filtered ? foundCards : cards;
+  const data = searched ? foundCards : cards;
 
   if (!data.length) {
     return (
       <>
-        <h1>No matching</h1>
+        <h3 style={{ color: "#FBFAFF" }}>No matching</h3>
       </>
     );
   } else {
     return (
       <>
-      <AutoSizer >
-        {({height, width}:{height:number, width : number})=>{
-          return (
-        <List 
-          style={{ scrollbarWidth: "none" }}
-
-          itemData={data}
-          itemCount={cards.length}
-          itemSize={167}
-          height={height}
-          width={width}
-        >
-          {({ data, index, style }) => {
+        <AutoSizer>
+          {({ height, width }: { height: number; width: number }) => {
             return (
-              
-              <div style={style}>
-                
-                <BlockCardItem keyword={keyword} data_item={data[index]} />
-              </div>
-              
+              <List
+                style={{ scrollbarWidth: "none" }}
+                itemData={data}
+                itemCount={cards.length}
+                itemSize={167}
+                height={height}
+                width={width}
+              >
+                {({ data, index, style }) => {
+                  return (
+                    <div style={style}>
+                      <BlockCardItem
+                        keyword={keyword}
+                        data_item={data[index]}
+                      />
+                    </div>
+                  );
+                }}
+              </List>
             );
           }}
-        </List>
-        )}}
         </AutoSizer>
       </>
     );

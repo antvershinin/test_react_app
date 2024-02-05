@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BlockCardStyled = styled.div<{suitable : boolean}>`
+export const BlockCardStyled = styled.div<{ suitable: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -17,13 +17,16 @@ export const BlockCardStyled = styled.div<{suitable : boolean}>`
     flex-direction: column;
   }
 
+  .block_count_image {
+    width: 90px;
+    height: 90px;
+  }
 
   .block_count_text {
     margin-top: 10px;
     opacity: 0.6;
     font-size: 10px;
-    color: #6E42CA;
-;
+    color: #6e42ca;
   }
 
   .card_description {
@@ -31,7 +34,6 @@ export const BlockCardStyled = styled.div<{suitable : boolean}>`
     display: flex;
     flex-direction: column;
     margin-right: 43px;
- 
   }
 
   .description_title {
@@ -42,15 +44,11 @@ export const BlockCardStyled = styled.div<{suitable : boolean}>`
   .description_text {
     opacity: 60%;
     font-size: 13px;
-;
   }
 
   .card_buttons {
     margin-top: 20px;
-
   }
-
-
 
   .buttons_button {
     height: 32px;
@@ -58,16 +56,15 @@ export const BlockCardStyled = styled.div<{suitable : boolean}>`
     margin-right: 32px;
     margin-bottom: 8px;
     border-radius: 4px;
-    border: 1px solid #6E42CA;
-    color: ${(props) => (props.suitable ? '#000' : '#6E42CA')};
+    border: 1px solid #6e42ca;
+    color: ${(props) => (props.suitable ? "#FBFAFF" : "#6E42CA")};
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${(props) => (props.suitable ? '#6E42CA' : null)};
+    background-color: ${(props) => (props.suitable ? "#6E42CA" : null)};
     cursor: pointer;
     &:hover {
-      border-width:2px;
+      border-width: 2px;
     }
-
   }
 `;

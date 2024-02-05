@@ -5,5 +5,5 @@ export interface ICard {
   description: string;
   blocksCount: number;
   id: string;
-  suitable: boolean 
+  suitable: boolean;
 }

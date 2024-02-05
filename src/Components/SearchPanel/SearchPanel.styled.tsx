@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SearchPanelStyled = styled.div`
   display: flex;
-  
+
   flex-direction: column;
   width: 100%;
   margin-bottom: 32px;
@@ -48,11 +48,9 @@ export const SearchPanelStyled = styled.div`
     border-radius: 99px;
     background-color: #1c1c33;
     font-size: 13px;
+    padding: 0 15px;
     &:hover {
       cursor: pointer;
     }
-  }
-  .filter_button_frame {
-    padding: 0 8px;
   }
 `;

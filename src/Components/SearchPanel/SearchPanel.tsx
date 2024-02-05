@@ -4,13 +4,12 @@ import { useCards } from "../../context/CardProvider";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 
-
 type Props = {};
 
 export const SearchPanel: React.FC<Props> = () => {
   const { keywords } = useParams();
 
-  const { filterCardsState } = useCards();
+  const { filterCardsState, setFilter, currentFilter } = useCards();
 
   const navigate = useNavigate();
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -20,8 +19,9 @@ export const SearchPanel: React.FC<Props> = () => {
     filterCardsState(tagret);
   };
 
-  
-
+  const handleClick = () => {
+    setFilter(true);
+  };
 
   return (
     <SearchPanelStyled>
@@ -31,7 +31,6 @@ export const SearchPanel: React.FC<Props> = () => {
           className="search_logo"
         />
         <input
-        
           defaultValue={keywords ? keywords : undefined}
           onChange={handleChange}
           className="search_input"
@@ -44,8 +43,9 @@ export const SearchPanel: React.FC<Props> = () => {
           <div className="filter_button_frame">all</div>
         </div>
         <div className="filter_button">
-          {" "}
-          <div className="filter_button_frame">selected</div>
+          <div className="filter_button_frame" onClick={handleClick}>
+            selected
+          </div>
         </div>
       </div>
     </SearchPanelStyled>
